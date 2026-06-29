@@ -11,7 +11,7 @@ public class NotificacaoSMS extends Notificacao {
 	//Sobreescrita
 	@Override
 	public void enviar(String mensagem) {//Objetivo dessa classe é printar a mensagem
-	
+		Validacao.validarMensagem(mensagem);//Validação da msg antes de printar
 		System.out.println("Enviando SMS para " + this.getDestinatario() + " - Mensagem: " + mensagem);
 		
 	}

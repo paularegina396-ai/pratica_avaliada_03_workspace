@@ -16,13 +16,18 @@ public class TestaCarros {
 
 	}
 	//Métodos de Teste
+	public static void criarCarroEletrico(String modelo, int velocidade, int nivelBateria, int aceleracao) {
+	    CarroEletrico carro = new CarroEletrico(modelo, velocidade, nivelBateria);
+	    carro.acelerar(aceleracao);
+	    carro.visualizar();
+	}
+	
 	//Criação de um carro elétrico
 	static void carroEletrico() {
 		System.out.println("\n ******************Caso 1: Criação de um carro elétrico*************************");
 		try {
-			CarroEletrico usu = new CarroEletrico("Tesla Model 3", 0, 20);// modelo,  velocidade inicial,  nivelBateria inicial
-			usu.acelerar(30);
-			usu.visualizar();
+			//CarroEletrico usu = new CarroEletrico("Tesla Model 3", 0, 20);// modelo,  velocidade inicial,  nivelBateria inicial
+			criarCarroEletrico("Tesla Model 3", 0, 20, 30);
 		} catch (Exception e) {
 			System.err.println("Erro: " + e.getMessage());
 		}
@@ -32,9 +37,8 @@ public class TestaCarros {
 	static void aceleracaoValida() {
 		System.out.println("\n ******************Caso 2: Aceleração válida******************");
 		try {
-			CarroEletrico usu = new CarroEletrico("BYD Dolfin", 70, 70);
-			usu.acelerar(5);
-			usu.visualizar();
+			criarCarroEletrico("BYD Dolfin", 70, 70, 5); // Passa os parâmetros pro método auxiliar!
+			//usu.visualizar();
 		} catch (Exception e) {
 			System.err.println("Erro: " + e.getMessage());
 		}
@@ -43,9 +47,7 @@ public class TestaCarros {
 	static void aceleracaoInvalida() {
 		System.out.println("\n ******************Caso 3: Aceleração com valor inválido****************************");
 		try {
-			CarroEletrico usu = new CarroEletrico("BYD Dolfin", 70, 70);
-			usu.acelerar(-3);
-			usu.visualizar();
+			criarCarroEletrico("BYD Dolfin", 70, 70, -3);
 		} catch (Exception e) {
 			System.err.println("Erro: " + e.getMessage());
 		}
@@ -55,9 +57,7 @@ public class TestaCarros {
 	static void bateriaInsuficiente() {
 		System.out.println("\n ******************Caso 4: Bateria insuficiente***********************");
 		try {
-			CarroEletrico usu = new CarroEletrico("BYD Dolfin", 70, 0);
-			usu.acelerar(5);
-			usu.visualizar();
+			criarCarroEletrico("BYD Dolfin", 70, 0, 5);
 		} catch (Exception e) {
 			System.err.println("Erro: " + e.getMessage());
 		}
@@ -68,8 +68,7 @@ public class TestaCarros {
 	static void bateriaAbaixoZero() {
 		System.out.println("\n ******************Caso 5: Nível de bateria negativo***********************");
 		try {
-			CarroEletrico usu = new CarroEletrico("BYD Dolfin", 70, -7);
-			usu.visualizar();
+			criarCarroEletrico("BYD Dolfin", 70, -7, 5);
 		} catch (Exception e) {
 			System.err.println("Erro: " + e.getMessage());
 		}
@@ -79,8 +78,7 @@ public class TestaCarros {
 	static void bateriaAcimaCem() {
 		System.out.println("\n ******************Caso 6: Nível de bateria acima de 100%***********************");
 		try {
-			CarroEletrico usu = new CarroEletrico("BYD Dolfin", 70, 101);
-			usu.visualizar();
+			criarCarroEletrico("BYD Dolfin", 70, 101, 5);
 		} catch (Exception e) {
 			System.err.println("Erro: " + e.getMessage());
 		}

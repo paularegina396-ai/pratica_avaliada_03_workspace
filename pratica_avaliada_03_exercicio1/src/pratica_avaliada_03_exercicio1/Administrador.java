@@ -7,6 +7,7 @@ public class Administrador extends Usuario {
 	//Método Construtor
 	public Administrador(String nome, String email, String nivelDeAcesso) {
 		super(nome, email);
+		Validacao.validarNome(nivelDeAcesso);
 		this.nivelDeAcesso = nivelDeAcesso;
 		
 	}
@@ -17,6 +18,7 @@ public class Administrador extends Usuario {
 	}
 
 	public void setNivelDeAcesso(String nivelDeAcesso) {
+		Validacao.validarNome(nivelDeAcesso);
 		this.nivelDeAcesso = nivelDeAcesso;
 	}
 	

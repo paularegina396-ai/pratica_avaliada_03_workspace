@@ -6,6 +6,7 @@ public class Notificacao {
 	
 	//Método Construtor
 	public Notificacao(String destinatario) {
+		Validacao.validarDestinatario(destinatario); //Validação antes de construir
 		this.destinatario = destinatario;
 	}
 	
@@ -14,7 +15,8 @@ public class Notificacao {
 		return destinatario;
 	}
 
-	public void setDestinatario(String destinatario) {
+	public void setDestinatario(String destinatario) {//Validação antes de set
+		Validacao.validarDestinatario(destinatario);
 		this.destinatario = destinatario;
 	}
 	

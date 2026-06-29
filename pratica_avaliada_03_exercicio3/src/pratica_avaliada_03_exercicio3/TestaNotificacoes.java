@@ -23,15 +23,19 @@ public class TestaNotificacoes {
 		Validacao.validarTipo(tipo);
 		Validacao.validarDestinatario(destinatario);;
 		Validacao.validarMensagem(mensagem);
-		if(tipo == "EMAIL") {
+		
+		if (tipo.equalsIgnoreCase("EMAIL")) {
 			// Instancia a filha de Email
-			NotificacaoEmail usu = new NotificacaoEmail(destinatario); //É errado criar assim? Deveria criar uma classe mãe?
-			usu.enviar(mensagem);
-		}else {
-			// Instancia a filha de SMS
-			NotificacaoSMS usu = new NotificacaoSMS(destinatario);
-			usu.enviar(mensagem);
-		}
+				NotificacaoEmail usu = new NotificacaoEmail(destinatario); //É errado criar assim? Deveria criar uma classe mãe?
+				usu.enviar(mensagem);
+	    } else if (tipo.equalsIgnoreCase("SMS")) {
+	    	// Instancia a filha de SMS
+	    		NotificacaoSMS usu = new NotificacaoSMS(destinatario);
+	    		usu.enviar(mensagem);
+	    } else {
+	        // Proteção extra: se não for nenhum dos dois, joga a exceção explicitamente
+	        throw new IllegalArgumentException("Tipo de notificação inválido!");
+	    }
 		
 		//usu.enviar(mensagem); - ao inves de por dois posso por so um aqui ne
 
